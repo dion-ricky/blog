@@ -1,0 +1,37 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "My Personal Blog",
+  "main": "index",
+  "scripts": {
+    "server": "http-server -p 8081 ./dist/",
+    "tailwind": "npx tailwindcss build src/styles/style.css -o src/styles/tw-style.css",
+    "tailwind:prod": "npx tailwindcss build src/styles/style.css -o src/styles/tw-style.css",
+    "prod": "export NODE_ENV=production && rm -rf dist && npm run tailwind:prod && npm run build",
+    "build": "parcel build src/index.html",
+    "dev": "rm -rf dist && parcel src/index.html --port 8081 --hmr-port 8082",
+    "minify": "node minify.js",
+    "minify-production": "node minify-build.js"
+  },
+  "author": "Dion Ricky",
+  "license": "",
+  "dependencies": {
+    "date-fns": "^2.15.0",
+    "tailwindcss": "^1.5.2"
+  },
+  "devDependencies": {
+    "@node-minify/clean-css": "^6.0.0",
+    "@node-minify/core": "^6.0.0",
+    "http-server": "^0.12.3",
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-static-files-copy": "^2.4.3"
+  },
+  "staticFiles": {
+    "staticPath": [
+      {
+        "staticPath": "src/icons",
+        "staticOutDir": "icons"
+      }
+    ]
+  }
+}
